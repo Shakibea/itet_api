@@ -8,13 +8,13 @@ from typing_extensions import Annotated
 
 # Client sending to Server
 # Schemas Models
-class PostBase(BaseModel):
+class EventBase(BaseModel):
     title: str
     content: str
     published: bool = True
 
 
-class PostCreateRequest(PostBase):
+class EventCreateRequest(EventBase):
     pass
 
 
@@ -29,7 +29,17 @@ class UserResponse(BaseModel):
         orm_mode = True
 
 
-class PostResponse(PostBase):
+class ProfileResponse(BaseModel):
+    id: int
+    name: str
+    batch_no: str
+    created_at: datetime
+
+    class Config:
+        orm_mode = True
+
+
+class EventResponse(EventBase):
     id: int
     created_at: datetime
     # owner_id: int
@@ -44,6 +54,12 @@ class PostResponse(PostBase):
 class UserCreateRequest(BaseModel):
     email: EmailStr
     password: str
+
+
+class ProfileCreateRequest(BaseModel):
+    name: str
+    membership_id: int
+    batch_no: int
 
 
 class UserLogin(UserCreateRequest):
