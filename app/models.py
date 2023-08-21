@@ -31,7 +31,7 @@ class User(Base):
     password = Column(String, nullable=False)
     created_at = Column(DateTime(timezone=True), nullable=False, server_default=text('now()'))
     # Add Role Column
-    role = Column(String, nullable=False, server_default=text('member'))
+    # role = Column(String, nullable=False, server_default=text('member'))
 
 
 class Profile(Base):
